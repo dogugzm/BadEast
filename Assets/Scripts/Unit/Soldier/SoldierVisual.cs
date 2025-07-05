@@ -6,12 +6,15 @@ namespace Army.Soldier
     public class SoldierVisual : MonoBehaviour
     {
         private static readonly int EmissiveColor = Shader.PropertyToID("_EmissionColor");
-        [SerializeField] private Renderer soldierRenderer;
         private const float HighlightedIntensity = 2.0f;
         private const float NormalIntensity = 1.0f;
 
+        [SerializeField] private Renderer soldierRenderer;
+        [SerializeField] private Color emissiveColor;
+
         private void Awake()
         {
+            soldierRenderer.material.color = emissiveColor;
             SetNormal();
         }
 
@@ -19,7 +22,7 @@ namespace Army.Soldier
         {
             if (soldierRenderer != null)
             {
-                soldierRenderer.material.SetColor(EmissiveColor, Color.cyan * HighlightedIntensity);
+                soldierRenderer.material.SetColor(EmissiveColor, emissiveColor * HighlightedIntensity);
             }
         }
 
@@ -27,7 +30,7 @@ namespace Army.Soldier
         {
             if (soldierRenderer != null)
             {
-                soldierRenderer.material.SetColor(EmissiveColor, Color.cyan * NormalIntensity);
+                soldierRenderer.material.SetColor(EmissiveColor, emissiveColor * NormalIntensity);
             }
         }
     }

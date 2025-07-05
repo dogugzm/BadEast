@@ -2,18 +2,19 @@ using System;
 using Army.Soldier;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Army
 {
-    public class ArmyVisualController : MonoBehaviour
+    public class UnitVisualController : MonoBehaviour
     {
-        [SerializeField] private ArmySelectable armySelectable;
+        [FormerlySerializedAs("armySelectable")] [SerializeField] private UnitSelectable unitSelectable;
         [SerializeField] private SoldierVisual[] soldierVisuals;
 
         private void Awake()
         {
-            armySelectable.OnSelected += HandleSelected;
-            armySelectable.OnDeselected += HandleDeselected;
+            unitSelectable.OnSelected += HandleSelected;
+            unitSelectable.OnDeselected += HandleDeselected;
         }
 
         private void HandleDeselected(ISelectable obj)

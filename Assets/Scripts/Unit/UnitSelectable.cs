@@ -12,7 +12,7 @@ namespace Army
         Action<ISelectable> OnDeselected { get; set; }
     }
 
-    public class ArmySelectable : MonoBehaviour, ISelectable
+    public class UnitSelectable : MonoBehaviour, ISelectable
     {
         public bool IsSelected { get; private set; }
 

@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 
 namespace Army
 {
-    public class ArmyMovement : MonoBehaviour
+    public class UnitMovement : MonoBehaviour
     {
         [FormerlySerializedAs("_soldiers")] [SerializeField]
         private SoldierMovement[] soldiers;
@@ -19,7 +19,6 @@ namespace Army
 
         private void Awake()
         {
-            LeanTouch.OnFingerTap += OnFingerTap;
             Initialize();
         }
 
@@ -41,24 +40,13 @@ namespace Army
         {
             _targetPosition = transform.position;
         }
-        
-        private void OnDestroy()
-        {
-            LeanTouch.OnFingerTap -= OnFingerTap;
-        }
 
-        private void OnFingerTap(LeanFinger touch)
+        public void SetTarget(Vector3 position)
         {
-            if (touch.IsOverGui) return;
-
-            var ray = Camera.main.ScreenPointToRay(touch.ScreenPosition);
-            if (Physics.Raycast(ray, out var hit))
-            {
-                var newTarget = hit.point;
-                newTarget.y = transform.position.y;
-                _targetPosition = newTarget;
-                _isMoving = true;
-            }
+            var newPos = position;
+            newPos.y = transform.position.y;
+            _targetPosition = newPos;
+            _isMoving = true;
         }
 
         private void Update()
@@ -78,7 +66,14 @@ namespace Army
             else
             {
                 _isMoving = false;
+                OnTargetReached();
             }
+        }
+
+        private void OnTargetReached()
+        {
+            if (!TryGetComponent(out ISelectable selectable)) return;
+            selectable.Deselect();
         }
 
         private void OnDrawGizmos()

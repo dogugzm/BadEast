@@ -14,7 +14,7 @@ namespace Army.Soldier
         private Transform _armyTransform;
         private float _delayTime;
 
-        private Vector3 TargetTransform() => _armyTransform.position + _offsetFromArmy;
+        private Vector3 TargetTransform() => _armyTransform.localPosition + _offsetFromArmy;
 
         public void Init(Vector3 offset, Transform army)
         {
