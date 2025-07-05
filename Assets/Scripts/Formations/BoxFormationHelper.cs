@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Formations
 {
     public static class BoxFormationHelper
     {

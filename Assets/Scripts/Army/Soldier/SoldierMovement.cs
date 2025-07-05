@@ -1,12 +1,12 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace DefaultNamespace
+namespace Army.Soldier
 {
     public class SoldierMovement : MonoBehaviour
     {
         [SerializeField] private float moveSpeed = 5f;
-        [SerializeField] private float stoppingDistance = 0.1f; // Made this configurable in inspector
+        [SerializeField] private float stoppingDistance = 0.1f;
 
         private bool _isReady;
         private Vector3 _offsetFromArmy;
@@ -31,7 +31,6 @@ namespace DefaultNamespace
             Vector3 targetPosition = TargetTransform();
             float distanceToTarget = Vector3.Distance(transform.position, targetPosition);
 
-            // If we're far enough from target, start moving
             if (distanceToTarget > stoppingDistance)
             {
                 _isMoving = true;
@@ -45,14 +44,12 @@ namespace DefaultNamespace
                     return;
                 }
 
-                // Move towards target
                 transform.position = Vector3.MoveTowards(
                     transform.position,
                     targetPosition,
                     moveSpeed * Time.deltaTime
                 );
 
-                // Check if we've reached the target
                 if (distanceToTarget <= stoppingDistance)
                 {
                     _isMoving = false;
@@ -65,11 +62,9 @@ namespace DefaultNamespace
         {
             if (_isReady && _armyTransform != null)
             {
-                // Draw line to target for debugging
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawLine(transform.position, TargetTransform());
 
-                // Draw sphere at target position
                 Gizmos.color = Color.red;
                 Gizmos.DrawWireSphere(TargetTransform(), stoppingDistance);
             }

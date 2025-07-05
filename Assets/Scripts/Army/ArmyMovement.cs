@@ -1,16 +1,18 @@
-using System;
-using DG.Tweening;
+using Army.Soldier;
+using Formations;
 using Lean.Touch;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace DefaultNamespace
+namespace Army
 {
-   
-
-    public class MovementController : MonoBehaviour
+    public class ArmyMovement : MonoBehaviour
     {
-        [SerializeField] private SoldierMovement[] _soldiers;
+        [FormerlySerializedAs("_soldiers")] [SerializeField]
+        private SoldierMovement[] soldiers;
+
         [SerializeField] private float stoppingDistance = 0.1f;
+        [SerializeField] private float speed = 7f;
 
         private Vector3 _targetPosition;
         private bool _isMoving;
@@ -23,15 +25,15 @@ namespace DefaultNamespace
 
         private void Initialize()
         {
-            if (_soldiers == null || _soldiers.Length == 0) return;
+            if (soldiers == null || soldiers.Length == 0) return;
 
             var positions =
-                BoxFormationHelper.GetPositions(_soldiers.Length, transform.position, 2.0f, 1);
+                BoxFormationHelper.GetPositions(soldiers.Length, transform.position, 2.0f, 1);
 
-            for (int i = 0; i < _soldiers.Length; i++)
+            for (int i = 0; i < soldiers.Length; i++)
             {
-                if (_soldiers[i] == null) continue;
-                _soldiers[i].Init(positions[i], transform);
+                if (soldiers[i] == null) continue;
+                soldiers[i].Init(positions[i], transform);
             }
         }
 
@@ -54,7 +56,7 @@ namespace DefaultNamespace
             if (Physics.Raycast(ray, out var hit))
             {
                 var newTarget = hit.point;
-                newTarget.y = transform.position.y; // Keep the y position unchanged
+                newTarget.y = transform.position.y;
                 _targetPosition = newTarget;
                 _isMoving = true;
             }
@@ -71,7 +73,7 @@ namespace DefaultNamespace
                 transform.position = Vector3.MoveTowards(
                     transform.position,
                     _targetPosition,
-                    5 * Time.deltaTime
+                    speed * Time.deltaTime
                 );
             }
             else
@@ -84,11 +86,9 @@ namespace DefaultNamespace
         {
             if (_isMoving)
             {
-                // Draw target position
                 Gizmos.color = Color.blue;
                 Gizmos.DrawWireSphere(_targetPosition, stoppingDistance);
 
-                // Draw line to target
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawLine(transform.position, _targetPosition);
             }
