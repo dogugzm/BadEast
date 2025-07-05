@@ -41,8 +41,7 @@ namespace Army
         {
             _targetPosition = transform.position;
         }
-
-
+        
         private void OnDestroy()
         {
             LeanTouch.OnFingerTap -= OnFingerTap;
