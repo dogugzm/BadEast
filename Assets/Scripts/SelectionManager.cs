@@ -26,12 +26,6 @@ namespace DefaultNamespace
             if (!Physics.Raycast(ray, out var hit)) return;
 
 
-            if (hit.collider.TryGetComponent(out IUnit unit))
-            {
-                SelectedUnit = unit;
-            }
-
-
             if (hit.collider.CompareTag(GroundTagName) && SelectedUnit != null)
             {
                 if (SelectedUnit.transform.TryGetComponent(out UnitMovement unitMovement))
@@ -39,18 +33,33 @@ namespace DefaultNamespace
                     unitMovement.SetTarget(hit.point);
                     SelectedUnit = null;
                 }
+
+                return;
             }
 
 
             if (!hit.collider.TryGetComponent(out ISelectable selectable)) return;
 
-            if (selectable.IsSelected)
+            if (hit.collider.TryGetComponent(out IUnit unit))
             {
-                selectable.Deselect();
-            }
-            else
-            {
-                selectable.Select();
+                if (!selectable.IsSelected)
+                {
+                    if (SelectedUnit is not null)
+                    {
+                        SelectedUnit.transform.TryGetComponent(out ISelectable selectableUnit);
+                        if (selectableUnit != null)
+                        {
+                            selectableUnit.Deselect();
+                        }
+                    }
+
+                    SelectedUnit = unit;
+                    selectable.Select();
+                }
+                else
+                {
+                    selectable.Deselect();
+                }
             }
         }
     }
