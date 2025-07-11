@@ -9,6 +9,13 @@ namespace DefaultNamespace
 {
     public class SelectionManager : IInitializable
     {
+        private readonly GridManager _gridManager;
+
+        public SelectionManager(GridManager gridManager)
+        {
+            _gridManager = gridManager;
+        }
+
         [CanBeNull] public IUnit SelectedUnit { get; private set; }
         private const string GroundTagName = "Ground";
 
@@ -27,10 +34,16 @@ namespace DefaultNamespace
 
             if (hit.collider.CompareTag(GroundTagName) && SelectedUnit != null)
             {
-                if (SelectedUnit.transform.TryGetComponent(out UnitMovement unitMovement))
+                //TODO: move to grid
+
+                var gridCell = _gridManager.GetNearestWalkableGridCell(hit.point);
+                if (gridCell != null)
                 {
-                    unitMovement.SetTarget(hit.point);
-                    SelectedUnit = null;
+                    if (SelectedUnit.transform.TryGetComponent(out UnitMovement unitMovement))
+                    {
+                        unitMovement.SetTarget(gridCell.WorldPos);
+                        SelectedUnit = null;
+                    }
                 }
 
                 return;
