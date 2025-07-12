@@ -1,11 +1,12 @@
 using Army.Soldier;
 using Formations;
-using Lean.Touch;
 using UnityEngine;
+using UnityEngine.AI; // Add this for NavMesh
 using UnityEngine.Serialization;
 
 namespace Army
 {
+    [RequireComponent(typeof(NavMeshAgent))]
     public class UnitMovement : MonoBehaviour
     {
         [FormerlySerializedAs("_soldiers")] [SerializeField]
@@ -17,8 +18,15 @@ namespace Army
         private Vector3 _targetPosition;
         private bool _isMoving;
 
+        private NavMeshAgent _agent;
+
         private void Awake()
         {
+            _agent = GetComponent<NavMeshAgent>();
+            _agent.stoppingDistance = stoppingDistance;
+            _agent.speed = speed;
+            _agent.autoBraking = true;
+
             Initialize();
         }
 
@@ -43,29 +51,19 @@ namespace Army
 
         public void SetTarget(Vector3 position)
         {
-            var newPos = position;
-            newPos.y = transform.position.y;
-            _targetPosition = newPos;
+            _targetPosition = position; // No need to flatten y for NavMesh pathfinding
             _isMoving = true;
+            _agent.SetDestination(_targetPosition);
         }
 
         private void Update()
         {
             if (!_isMoving) return;
 
-            float distanceToTarget = Vector3.Distance(transform.position, _targetPosition);
-
-            if (distanceToTarget > stoppingDistance)
-            {
-                transform.position = Vector3.MoveTowards(
-                    transform.position,
-                    _targetPosition,
-                    speed * Time.deltaTime
-                );
-            }
-            else
+            if (!_agent.pathPending && _agent.remainingDistance <= stoppingDistance)
             {
                 _isMoving = false;
+                _agent.ResetPath();
                 OnTargetReached();
             }
         }

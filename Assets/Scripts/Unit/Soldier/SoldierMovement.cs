@@ -13,6 +13,8 @@ namespace Army.Soldier
         private bool _isMoving;
         private Transform _armyTransform;
         private float _delayTime;
+        [SerializeField] private float _minRange = 0.3f;
+        [SerializeField] private float _maxRange = 0.8f;
 
         private Vector3 TargetTransform() => _armyTransform.localPosition + _offsetFromArmy;
 
@@ -21,7 +23,7 @@ namespace Army.Soldier
             _offsetFromArmy = offset;
             _armyTransform = army;
             _isReady = true;
-            _delayTime = Random.Range(0f, 0.3f);
+            _delayTime = Random.Range(_minRange, _maxRange);
         }
 
         private void Update()
@@ -53,7 +55,7 @@ namespace Army.Soldier
                 if (distanceToTarget <= stoppingDistance)
                 {
                     _isMoving = false;
-                    _delayTime = Random.Range(0f, 0.3f);
+                    _delayTime = Random.Range(_minRange, _maxRange);
                 }
             }
         }

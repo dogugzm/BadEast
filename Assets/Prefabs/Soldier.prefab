@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979e9c2e7c08432580184dfdf15965f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 10
   stoppingDistance: 0.1
 --- !u!114 &7379180120533108630
 MonoBehaviour:
@@ -139,3 +139,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soldierRenderer: {fileID: 5870080137657893217}
+  emissiveColor: {r: 0, g: 0, b: 0, a: 0}

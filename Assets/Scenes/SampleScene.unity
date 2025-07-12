@@ -781,8 +781,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.370229, y: 0.19886729, z: -0.08146863, w: -0.9037395}
-  m_LocalPosition: {x: 6.0405493, y: 13.724894, z: -13.095653}
+  m_LocalRotation: {x: -0.29014948, y: 0.30093768, z: -0.096667066, w: -0.9032748}
+  m_LocalPosition: {x: 14.304461, y: 16.709257, z: -19.167686}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -949,7 +949,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.6666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: c2071d9ccfe794029845639372b94172, type: 2}
   m_BuildHeightMesh: 0
@@ -1511,7 +1511,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.6666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: c9f52c57f04da472db6de6ef97e06207, type: 2}
   m_BuildHeightMesh: 0
@@ -1749,6 +1749,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArmyUnit
       objectReference: {fileID: 0}
+    - target: {fileID: 1819902914042863587, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2039985173390468109, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
       propertyPath: emissiveColor.a
       value: 1
@@ -1783,7 +1787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4704170251756647677, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.47
+      value: 5.53
       objectReference: {fileID: 0}
     - target: {fileID: 4704170251756647677, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
       propertyPath: m_LocalPosition.y
