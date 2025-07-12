@@ -41,7 +41,7 @@ namespace DefaultNamespace
                 {
                     if (SelectedUnit.transform.TryGetComponent(out UnitMovement unitMovement))
                     {
-                        unitMovement.SetTarget(gridCell.WorldPos);
+                        unitMovement.SetTarget(gridCell.Value.worldPosition);
                         SelectedUnit = null;
                     }
                 }
