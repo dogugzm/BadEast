@@ -126,6 +126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   stoppingDistance: 0.1
+  _minRange: 0.3
+  _maxRange: 0.8
 --- !u!114 &7379180120533108630
 MonoBehaviour:
   m_ObjectHideFlags: 0

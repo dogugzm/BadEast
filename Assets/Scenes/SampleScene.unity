@@ -163,6 +163,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArmyUnit (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1819902914042863587, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2039985173390468109, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
       propertyPath: emissiveColor.a
       value: 1
@@ -1178,6 +1182,10 @@ PrefabInstance:
     - target: {fileID: 1819902914042863587, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
       propertyPath: m_Name
       value: ArmyUnit (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819902914042863587, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2039985173390468109, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
       propertyPath: emissiveColor.a
