@@ -1,4 +1,3 @@
-using Army;
 using JetBrains.Annotations;
 using Lean.Touch;
 using Unit;
@@ -16,7 +15,7 @@ namespace DefaultNamespace
             _gridManager = gridManager;
         }
 
-        [CanBeNull] public IUnit SelectedUnit { get; private set; }
+        [CanBeNull] private IUnit SelectedUnit { get; set; }
         private const string GroundTagName = "Ground";
 
         public void Initialize()

@@ -1,17 +1,8 @@
 using System;
 using UnityEngine;
 
-namespace Army
+namespace Unit
 {
-    public interface ISelectable
-    {
-        bool IsSelected { get; }
-        void Select();
-        void Deselect();
-        Action<ISelectable> OnSelected { get; set; }
-        Action<ISelectable> OnDeselected { get; set; }
-    }
-
     public class UnitSelectable : MonoBehaviour, ISelectable
     {
         public bool IsSelected { get; private set; }

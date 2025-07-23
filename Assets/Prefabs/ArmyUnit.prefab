@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 5379203057008025517}
   - component: {fileID: 921303085162837203}
   - component: {fileID: 8342536938201750273}
+  - component: {fileID: 5930407709604769991}
   m_Layer: 0
-  m_Name: ARMY
+  m_Name: Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,6 +152,21 @@ NavMeshAgent:
   m_BaseOffset: 0.7
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5930407709604769991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539956169858195021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52126ca77e5481d934a7daff578d655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1819902914042863587
 GameObject:
   m_ObjectHideFlags: 0

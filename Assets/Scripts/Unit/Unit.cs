@@ -1,15 +1,23 @@
-using Army;
 using UnityEngine;
 
 namespace Unit
 {
+    public enum UnitSide
+    {
+        Player = 0,
+        Enemy = 1
+    }
+
     public interface IUnit
     {
         Transform transform { get; }
-        // Define any unit-specific methods or properties here
+        UnitSide Side { get; }
     }
 
     public class Unit : MonoBehaviour, IUnit
     {
+        public UnitSide Side { get; set; } = UnitSide.Player;
+        
+        
     }
 }

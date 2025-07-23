@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Army.Soldier
+namespace Unit.Soldier
 {
     public class SoldierMovement : MonoBehaviour
     {

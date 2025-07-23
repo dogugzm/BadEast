@@ -2,16 +2,14 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections.Generic;
 
-[ExecuteInEditMode] // Allows script to run in Edit Mode
+[ExecuteInEditMode]
 public class GridManager : MonoBehaviour
 {
-    [Header("Grid Settings")]
-    public float cellSize = 0.5f; // Size of each 2D cell
+    [Header("Grid Settings")] public float cellSize = 0.5f; // Size of each 2D cell
     public float sampleRadius = 0.25f; // Radius for sampling walkable points
     public float minDistanceBetweenCells = 0.1f; // Minimum distance between cell edges
 
-    [Header("NavMesh Area")]
-    public int navMeshAreaMask = NavMesh.AllAreas;
+    [Header("NavMesh Area")] public int navMeshAreaMask = NavMesh.AllAreas;
 
     public List<GridData> gridCells = new List<GridData>();
 

@@ -1,10 +1,10 @@
-using Army.Soldier;
 using Formations;
+using Unit.Soldier;
 using UnityEngine;
-using UnityEngine.AI; // Add this for NavMesh
+using UnityEngine.AI;
 using UnityEngine.Serialization;
 
-namespace Army
+namespace Unit
 {
     [RequireComponent(typeof(NavMeshAgent))]
     public class UnitMovement : MonoBehaviour

@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace Army.Soldier
+namespace Unit.Soldier
 {
     public class SoldierVisual : MonoBehaviour
     {

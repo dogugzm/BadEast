@@ -1,14 +1,14 @@
-using System;
-using Army.Soldier;
-using UnityEditor.Experimental.GraphView;
+using Unit.Soldier;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Army
+namespace Unit
 {
     public class UnitVisualController : MonoBehaviour
     {
-        [FormerlySerializedAs("armySelectable")] [SerializeField] private UnitSelectable unitSelectable;
+        [FormerlySerializedAs("armySelectable")] [SerializeField]
+        private UnitSelectable unitSelectable;
+
         [SerializeField] private SoldierVisual[] soldierVisuals;
 
         private void Awake()
