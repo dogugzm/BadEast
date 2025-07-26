@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Unit.Soldier
 {
-    public class SoldierMovement : MonoBehaviour
+    public class SoldierMovementController : MonoBehaviour
     {
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float stoppingDistance = 0.1f;

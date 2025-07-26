@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Unit.Soldier
 {
-    public class SoldierVisual : MonoBehaviour
+    public class SoldierVisualController : MonoBehaviour
     {
         private static readonly int EmissiveColor = Shader.PropertyToID("_EmissionColor");
         private const float HighlightedIntensity = 2.0f;
@@ -17,7 +17,7 @@ namespace Unit.Soldier
             SetNormal();
         }
 
-        public void Higlight()
+        public void Highlight()
         {
             if (soldierRenderer != null)
             {

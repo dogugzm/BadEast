@@ -1,36 +1,26 @@
-using Unit.Soldier;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Unit
 {
     public class UnitVisualController : MonoBehaviour
     {
-        [FormerlySerializedAs("armySelectable")] [SerializeField]
-        private UnitSelectable unitSelectable;
-
-        [SerializeField] private SoldierVisual[] soldierVisuals;
+        [SerializeField] private UnitSelectionController unitSelectionController;
+        [SerializeField] private UnitSoldierController unitSoldierController;
 
         private void Awake()
         {
-            unitSelectable.OnSelected += HandleSelected;
-            unitSelectable.OnDeselected += HandleDeselected;
+            unitSelectionController.OnSelected += HandleSelected;
+            unitSelectionController.OnDeselected += HandleDeselected;
         }
 
-        private void HandleDeselected(ISelectable obj)
+        private void HandleDeselected(ISelectable _)
         {
-            foreach (var soldier in soldierVisuals)
-            {
-                soldier.SetNormal();
-            }
+            unitSoldierController.HighlightSoldiers();
         }
 
-        private void HandleSelected(ISelectable obj)
+        private void HandleSelected(ISelectable _)
         {
-            foreach (var soldier in soldierVisuals)
-            {
-                soldier.Higlight();
-            }
+            unitSoldierController.SetNormalSoldiers();
         }
     }
 }

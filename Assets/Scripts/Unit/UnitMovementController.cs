@@ -6,17 +6,20 @@ using UnityEngine.Serialization;
 
 namespace Unit
 {
-    [RequireComponent(typeof(NavMeshAgent))]
-    public class UnitMovement : MonoBehaviour
+    public interface IUnitMovement
     {
-        [FormerlySerializedAs("_soldiers")] [SerializeField]
-        private SoldierMovement[] soldiers;
+        void SetTarget(Vector3 position);
+        void SetCanMove(bool canMove);
+        void ResetMovement();
+    }
 
+    [RequireComponent(typeof(NavMeshAgent))]
+    public class UnitMovementController : MonoBehaviour, IUnitMovement
+    {
         [SerializeField] private float stoppingDistance = 0.1f;
         [SerializeField] private float speed = 7f;
 
         private Vector3 _targetPosition;
-        private bool _isMoving;
 
         private NavMeshAgent _agent;
 
@@ -26,22 +29,6 @@ namespace Unit
             _agent.stoppingDistance = stoppingDistance;
             _agent.speed = speed;
             _agent.autoBraking = true;
-
-            Initialize();
-        }
-
-        private void Initialize()
-        {
-            if (soldiers == null || soldiers.Length == 0) return;
-
-            var positions =
-                BoxFormationHelper.GetPositions(soldiers.Length, transform.position, 2.0f, 1);
-
-            for (int i = 0; i < soldiers.Length; i++)
-            {
-                if (soldiers[i] == null) continue;
-                soldiers[i].Init(positions[i], transform);
-            }
         }
 
         private void Start()
@@ -52,18 +39,32 @@ namespace Unit
         public void SetTarget(Vector3 position)
         {
             _targetPosition = position; // No need to flatten y for NavMesh pathfinding
-            _isMoving = true;
+            _agent.ResetPath();
+            IsMoving = true;
             _agent.SetDestination(_targetPosition);
+        }
+
+        private bool IsMoving { get; set; }
+
+        public void SetCanMove(bool canMove)
+        {
+            IsMoving = canMove;
+            _agent.isStopped = !canMove;
+        }
+
+        public void ResetMovement()
+        {
+            _agent.ResetPath();
         }
 
         private void Update()
         {
-            if (!_isMoving) return;
+            if (!IsMoving) return;
 
             if (!_agent.pathPending && _agent.remainingDistance <= stoppingDistance)
             {
-                _isMoving = false;
-                _agent.ResetPath();
+                IsMoving = false;
+                ResetMovement();
                 OnTargetReached();
             }
         }
@@ -76,7 +77,7 @@ namespace Unit
 
         private void OnDrawGizmos()
         {
-            if (_isMoving)
+            if (IsMoving)
             {
                 Gizmos.color = Color.blue;
                 Gizmos.DrawWireSphere(_targetPosition, stoppingDistance);

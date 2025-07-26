@@ -38,7 +38,7 @@ namespace DefaultNamespace
                 var gridCell = _gridManager.GetNearestWalkableGridCell(hit.point);
                 if (gridCell != null)
                 {
-                    if (SelectedUnit.transform.TryGetComponent(out UnitMovement unitMovement))
+                    if (SelectedUnit.transform.TryGetComponent(out IUnitMovement unitMovement))
                     {
                         unitMovement.SetTarget(gridCell.Value.worldPosition);
                         SelectedUnit = null;

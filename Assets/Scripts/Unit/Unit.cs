@@ -14,10 +14,21 @@ namespace Unit
         UnitSide Side { get; }
     }
 
+    public enum CombatStatus
+    {
+        None = 0,
+        InCombat = 1,
+        OutOfCombat = 2
+    }
+
     public class Unit : MonoBehaviour, IUnit
     {
-        public UnitSide Side { get; set; } = UnitSide.Player;
-        
-        
+        [field: SerializeField] public UnitSide Side { get; protected set; }
+
+        private void Initialize()
+        {
+            if (!TryGetComponent(out UnitSoldierController soldierController)) return;
+            soldierController.Initialize();
+        }
     }
 }
