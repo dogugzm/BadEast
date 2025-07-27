@@ -5,7 +5,7 @@ namespace Unit.Soldier
     public class SoldierMovementController : MonoBehaviour
     {
         [SerializeField] private float moveSpeed = 5f;
-        [SerializeField] private float stoppingDistance = 0.1f;
+        [SerializeField] private float stoppingDistance = 0.2f; // Used in combat, not formation
         [SerializeField] private float noiseAmplitude = 0.2f;
         [SerializeField] private float noiseFrequency = 0.5f;
 
@@ -14,6 +14,11 @@ namespace Unit.Soldier
         private Transform _unitTransform;
         private float _delayTime;
         private Vector2 _noiseSeed;
+        private bool _followFormation = true;
+
+        public float GetMoveSpeed() => moveSpeed;
+        public float GetStoppingDistance() => stoppingDistance;
+        public void SetFollowFormation(bool follow) => _followFormation = follow;
 
         private Vector3 TargetTransform()
         {
@@ -39,10 +44,9 @@ namespace Unit.Soldier
 
         private void Update()
         {
-            if (!_isReady || !_unitTransform) return;
+            if (!_isReady || !_unitTransform || !_followFormation) return;
 
             Vector3 targetPosition = TargetTransform();
-
             transform.position = Vector3.MoveTowards(
                 transform.position,
                 targetPosition,
@@ -52,7 +56,7 @@ namespace Unit.Soldier
 
         private void OnDrawGizmos()
         {
-            if (_isReady && _unitTransform != null)
+            if (_isReady && _unitTransform != null && _followFormation)
             {
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawLine(transform.position, TargetTransform());

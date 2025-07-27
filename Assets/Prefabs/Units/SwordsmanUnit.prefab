@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 86442667572554617, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 86442667572554617, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 33
+      objectReference: {fileID: 0}
     - target: {fileID: 140560293979723520, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
       propertyPath: emissiveColor.a
       value: 1
@@ -39,6 +47,14 @@ PrefabInstance:
     - target: {fileID: 729051022428935123, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
       propertyPath: emissiveColor.r
       value: 0.16420436
+      objectReference: {fileID: 0}
+    - target: {fileID: 1685046219343846567, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1685046219343846567, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 1819902914042863587, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
       propertyPath: m_Name
@@ -60,6 +76,14 @@ PrefabInstance:
       propertyPath: emissiveColor.r
       value: 0.16420436
       objectReference: {fileID: 0}
+    - target: {fileID: 2057932027804932212, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057932027804932212, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 33
+      objectReference: {fileID: 0}
     - target: {fileID: 2727824156162851739, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
       propertyPath: emissiveColor.a
       value: 1
@@ -75,6 +99,14 @@ PrefabInstance:
     - target: {fileID: 2727824156162851739, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
       propertyPath: emissiveColor.r
       value: 0.16420436
+      objectReference: {fileID: 0}
+    - target: {fileID: 4082316314403196143, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4082316314403196143, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 4704170251756647677, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -116,6 +148,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5271343707737755532, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271343707737755532, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 33
+      objectReference: {fileID: 0}
     - target: {fileID: 6078720117249327352, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
       propertyPath: emissiveColor.a
       value: 1
@@ -195,6 +235,38 @@ PrefabInstance:
     - target: {fileID: 7820070266299052254, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
       propertyPath: emissiveColor.r
       value: 0.16420436
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212904257796489130, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212904257796489130, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393387963913368612, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393387963913368612, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417632535319470682, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417632535319470682, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703460275110599046, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703460275110599046, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 33
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6177825782702827133, guid: 087f14f5ef5534c4b8182e1ab934302b, type: 3}

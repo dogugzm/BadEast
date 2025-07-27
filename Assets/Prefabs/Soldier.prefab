@@ -139,9 +139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  stoppingDistance: 0.1
-  noiseAmplitude: 0.2
-  noiseFrequency: 0.5
+  stoppingDistance: 0.2
+  noiseAmplitude: 0.1
+  noiseFrequency: 0.2
 --- !u!114 &7379180120533108630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,3 +173,5 @@ MonoBehaviour:
     <MinDamage>k__BackingField: 5
     <MaxDamage>k__BackingField: 15
     <Health>k__BackingField: 100
+    <AttackRange>k__BackingField: 1.5
+  movementController: {fileID: 7458432178641901481}

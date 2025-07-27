@@ -64,6 +64,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2217648940679177324, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2217648940679177324, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2535606764774869434, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2535606764774869434, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565491822027562948, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565491822027562948, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2745823800041378890, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2745823800041378890, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398493529741718118, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398493529741718118, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3627015403268357394, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
       propertyPath: emissiveColor.b
       value: 0.051486313
@@ -111,6 +151,22 @@ PrefabInstance:
     - target: {fileID: 4532333891377598640, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
       propertyPath: emissiveColor.r
       value: 0.8396226
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648634290418874183, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648634290418874183, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5435289069585265556, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5435289069585265556, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5453370342041423853, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
       propertyPath: emissiveColor.b
@@ -148,6 +204,14 @@ PrefabInstance:
       propertyPath: emissiveColor.r
       value: 0.8396226
       objectReference: {fileID: 0}
+    - target: {fileID: 6256102413902430361, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256102413902430361, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6773172844286457907, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
       propertyPath: emissiveColor.b
       value: 0.051486313
@@ -159,6 +223,14 @@ PrefabInstance:
     - target: {fileID: 6773172844286457907, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
       propertyPath: emissiveColor.r
       value: 0.8396226
+      objectReference: {fileID: 0}
+    - target: {fileID: 8018225745103939343, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MaxDamage>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8018225745103939343, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
+      propertyPath: data.<MinDamage>k__BackingField
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8230914651460085883, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
       propertyPath: emissiveColor.b
