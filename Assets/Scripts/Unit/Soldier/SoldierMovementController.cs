@@ -10,14 +10,14 @@ namespace Unit.Soldier
         [SerializeField] private float noiseFrequency = 0.5f;
 
         private bool _isReady;
-        private Vector3 _offsetFromArmy;
-        private Transform _armyTransform;
+        private Vector3 _offsetFromUnit;
+        private Transform _unitTransform;
         private float _delayTime;
         private Vector2 _noiseSeed;
 
         private Vector3 TargetTransform()
         {
-            Vector3 target = _armyTransform.localPosition + _offsetFromArmy;
+            Vector3 target = _unitTransform.localPosition + _offsetFromUnit;
 
             // Add Perlin noise to create natural deviation
             float time = Time.time * noiseFrequency + _delayTime; // Incorporate delay for variation
@@ -30,8 +30,8 @@ namespace Unit.Soldier
 
         public void Init(Vector3 offset, Transform army)
         {
-            _offsetFromArmy = offset;
-            _armyTransform = army;
+            _offsetFromUnit = offset;
+            _unitTransform = army;
             _isReady = true;
             _noiseSeed = new Vector2(Random.value * 100, Random.value * 100);
             moveSpeed *= Random.Range(0.9f, 1.1f);
@@ -39,7 +39,7 @@ namespace Unit.Soldier
 
         private void Update()
         {
-            if (!_isReady || !_armyTransform) return;
+            if (!_isReady || !_unitTransform) return;
 
             Vector3 targetPosition = TargetTransform();
 
@@ -52,7 +52,7 @@ namespace Unit.Soldier
 
         private void OnDrawGizmos()
         {
-            if (_isReady && _armyTransform != null)
+            if (_isReady && _unitTransform != null)
             {
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawLine(transform.position, TargetTransform());

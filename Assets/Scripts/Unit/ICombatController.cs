@@ -7,7 +7,7 @@ namespace Unit
     {
         Transform transform { get; }
         CombatStatus CombatStatus { get; }
-        UniTask StartCombat(ICombatController combatController);
+        UniTask StartCombat(ICombatController targetCombatController);
         UniTask EndCombat(ICombatController combatController);
     }
 }

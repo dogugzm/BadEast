@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Unit
@@ -24,6 +25,11 @@ namespace Unit
     public class Unit : MonoBehaviour, IUnit
     {
         [field: SerializeField] public UnitSide Side { get; protected set; }
+
+        private void Awake()
+        {
+            Initialize();
+        }
 
         private void Initialize()
         {

@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 6391929950985804032}
   - component: {fileID: 5870080137657893217}
   - component: {fileID: 4428776600831597101}
+  - component: {fileID: 2322460371670918856}
   - component: {fileID: 7458432178641901481}
   - component: {fileID: 7379180120533108630}
+  - component: {fileID: 8868851726759348450}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -112,6 +114,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &2322460371670918856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668006386253847035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4c3e7c985942cdb437dac04f2fe414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7458432178641901481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,8 +140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   stoppingDistance: 0.1
-  _minRange: 0.3
-  _maxRange: 0.8
+  noiseAmplitude: 0.2
+  noiseFrequency: 0.5
 --- !u!114 &7379180120533108630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,3 +156,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soldierRenderer: {fileID: 5870080137657893217}
   emissiveColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &8868851726759348450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668006386253847035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c68a5a5ad8484293b7c29f9223557b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    <AttackInterval>k__BackingField: 1
+    <MinDamage>k__BackingField: 5
+    <MaxDamage>k__BackingField: 15
+    <Health>k__BackingField: 100

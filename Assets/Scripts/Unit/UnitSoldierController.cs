@@ -8,6 +8,8 @@ namespace Unit
     {
         [SerializeField] private Soldier.Soldier[] soldiers;
 
+        public Soldier.Soldier[] GetSoldiers() => soldiers;
+
         public void Initialize()
         {
             if (soldiers == null || soldiers.Length == 0) return;
@@ -40,6 +42,30 @@ namespace Unit
                 if (soldier == null) continue;
                 soldier.TryGetComponent(out SoldierVisualController soldierVisual);
                 soldierVisual.SetNormal();
+            }
+        }
+
+        public void StartCombat(IUnit targetUnit)
+        {
+            if (soldiers == null || soldiers.Length == 0) return;
+
+            foreach (var soldier in soldiers)
+            {
+                if (soldier == null) continue;
+                soldier.TryGetComponent(out SoldierCombatController combatController);
+                combatController.StartCombat(targetUnit);
+            }
+        }
+
+        public void EndCombat()
+        {
+            if (soldiers == null || soldiers.Length == 0) return;
+
+            foreach (var soldier in soldiers)
+            {
+                if (soldier == null) continue;
+                soldier.TryGetComponent(out SoldierCombatController combatController);
+                combatController.EndCombat();
             }
         }
     }

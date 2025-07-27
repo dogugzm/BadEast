@@ -5,23 +5,16 @@ namespace Unit.Swordsman
 {
     public class SwordsmanCombatController : UnitCombatController
     {
-        public override UniTask StartCombat(ICombatController combatController)
+        public override UniTask StartCombat(ICombatController targetCombatController)
         {
-            if (TryGetComponent(out IUnitMovement unitMovement))
-            {
-                unitMovement.SetTarget(combatController.transform.position);
-            }
-
-            Debug.Log("Swordsman combat started with " + combatController.transform.name);
-            
-
-            return base.StartCombat(combatController);
+            Debug.Log("Swordsman combat started with " + targetCombatController.transform.name);
+            return base.StartCombat(targetCombatController);
         }
 
-        public override UniTask EndCombat(ICombatController combatController)
+        public override UniTask EndCombat(ICombatController targetCombatController)
         {
-            Debug.Log("Swordsman combat ended with " + combatController.transform.name);
-            return base.EndCombat(combatController);
+            Debug.Log("Swordsman combat ended with " + targetCombatController.transform.name);
+            return base.EndCombat(targetCombatController);
         }
     }
 }
