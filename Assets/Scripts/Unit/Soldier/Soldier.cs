@@ -1,8 +1,13 @@
 using UnityEngine;
 
 namespace Unit.Soldier
+
 {
-    public class Soldier : MonoBehaviour
+    public interface ISoldier
+    {
+    }
+
+    public class Soldier : MonoBehaviour, ISoldier
     {
     }
 }

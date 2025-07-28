@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2322460371670918856}
   - component: {fileID: 7458432178641901481}
   - component: {fileID: 7379180120533108630}
-  - component: {fileID: 8868851726759348450}
+  - component: {fileID: 3725878198748887640}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soldierRenderer: {fileID: 5870080137657893217}
   emissiveColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &8868851726759348450
+--- !u!114 &3725878198748887640
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,10 +168,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c68a5a5ad8484293b7c29f9223557b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementController: {fileID: 7458432178641901481}
   data:
     <AttackInterval>k__BackingField: 1
-    <MinDamage>k__BackingField: 5
-    <MaxDamage>k__BackingField: 15
+    <Damage>k__BackingField: 5
     <Health>k__BackingField: 100
     <AttackRange>k__BackingField: 1.5
-  movementController: {fileID: 7458432178641901481}
+    <VisibleRange>k__BackingField: 3
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 0

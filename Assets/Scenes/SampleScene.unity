@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1158335297551898523, guid: 229bdafb7584049d6baed6331ead7767, type: 3}
+      propertyPath: targetLayerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 2112860514723529903, guid: 229bdafb7584049d6baed6331ead7767, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.38
@@ -167,9 +171,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2236596911231601727, guid: 229bdafb7584049d6baed6331ead7767, type: 3}
+      propertyPath: targetLayerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4780651513205172875, guid: 229bdafb7584049d6baed6331ead7767, type: 3}
+      propertyPath: targetLayerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 4997705399006703537, guid: 229bdafb7584049d6baed6331ead7767, type: 3}
       propertyPath: m_Name
       value: SwordsmanUnit Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6052528987771818873, guid: 229bdafb7584049d6baed6331ead7767, type: 3}
+      propertyPath: targetLayerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6431549766425830153, guid: 229bdafb7584049d6baed6331ead7767, type: 3}
+      propertyPath: targetLayerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6464525872815163606, guid: 229bdafb7584049d6baed6331ead7767, type: 3}
+      propertyPath: targetLayerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6640422164210895564, guid: 229bdafb7584049d6baed6331ead7767, type: 3}
+      propertyPath: targetLayerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8262098521047760515, guid: 229bdafb7584049d6baed6331ead7767, type: 3}
+      propertyPath: targetLayerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8873272115150728556, guid: 229bdafb7584049d6baed6331ead7767, type: 3}
+      propertyPath: targetLayerMask.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
