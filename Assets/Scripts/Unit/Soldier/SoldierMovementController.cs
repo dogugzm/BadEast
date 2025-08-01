@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Unit.Soldier
@@ -40,6 +41,22 @@ namespace Unit.Soldier
             _isReady = true;
             _noiseSeed = new Vector2(Random.value * 100, Random.value * 100);
             moveSpeed *= Random.Range(0.9f, 1.1f);
+        }
+
+        public async UniTask MoveTowards(Vector3 target, float range)
+        {
+            if (!_isReady || !_unitTransform) return;
+
+            _followFormation = false;
+            while (Vector3.Distance(transform.position, target) > range)
+            {
+                transform.position = Vector3.MoveTowards(
+                    transform.position,
+                    target,
+                    moveSpeed * Time.deltaTime
+                );
+                await UniTask.Yield();
+            }
         }
 
         private void Update()

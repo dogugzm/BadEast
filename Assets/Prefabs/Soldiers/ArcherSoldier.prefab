@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5540666156424351755
+--- !u!1001 &5854124950589514018
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1668006386253847035, guid: b9026712dbb6c44308604391e8e52c2a, type: 3}
       propertyPath: m_Name
-      value: SwordsmanSoldier
+      value: ArcherSoldier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668006386253847035, guid: b9026712dbb6c44308604391e8e52c2a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2394701410974183073, guid: b9026712dbb6c44308604391e8e52c2a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52,6 +56,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7379180120533108630, guid: b9026712dbb6c44308604391e8e52c2a, type: 3}
+      propertyPath: emissiveColor.b
+      value: 0.10679956
+      objectReference: {fileID: 0}
+    - target: {fileID: 7379180120533108630, guid: b9026712dbb6c44308604391e8e52c2a, type: 3}
+      propertyPath: emissiveColor.g
+      value: 0.9056604
+      objectReference: {fileID: 0}
+    - target: {fileID: 7379180120533108630, guid: b9026712dbb6c44308604391e8e52c2a, type: 3}
+      propertyPath: emissiveColor.r
+      value: 0.81954783
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3725878198748887640, guid: b9026712dbb6c44308604391e8e52c2a, type: 3}
     m_RemovedGameObjects: []
@@ -59,43 +75,45 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1668006386253847035, guid: b9026712dbb6c44308604391e8e52c2a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6823336914048039798}
+      addedObject: {fileID: 42348773736812363}
   m_SourcePrefab: {fileID: 100100000, guid: b9026712dbb6c44308604391e8e52c2a, type: 3}
---- !u!114 &3127127685104977826 stripped
+--- !u!114 &3945060006414038667 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7458432178641901481, guid: b9026712dbb6c44308604391e8e52c2a, type: 3}
-  m_PrefabInstance: {fileID: 5540666156424351755}
+  m_PrefabInstance: {fileID: 5854124950589514018}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6611728988237564400}
+  m_GameObject: {fileID: 5051901168572037337}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 979e9c2e7c08432580184dfdf15965f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &6611728988237564400 stripped
+--- !u!1 &5051901168572037337 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1668006386253847035, guid: b9026712dbb6c44308604391e8e52c2a, type: 3}
-  m_PrefabInstance: {fileID: 5540666156424351755}
+  m_PrefabInstance: {fileID: 5854124950589514018}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6823336914048039798
+--- !u!114 &42348773736812363
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6611728988237564400}
+  m_GameObject: {fileID: 5051901168572037337}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0d86583098543d7b3d286b62710b263, type: 3}
+  m_Script: {fileID: 11500000, guid: d5af67c141d9482a91bf671019b271c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementController: {fileID: 3127127685104977826}
+  movementController: {fileID: 3945060006414038667}
   data:
-    <AttackInterval>k__BackingField: 1
-    <Damage>k__BackingField: 70
+    <AttackInterval>k__BackingField: 3
+    <Damage>k__BackingField: 50
     <Health>k__BackingField: 100
-    <AttackRange>k__BackingField: 5
-    <VisibleRange>k__BackingField: 15
+    <AttackRange>k__BackingField: 1.5
+    <VisibleRange>k__BackingField: 30
   targetLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+  arrowPrefab: {fileID: 7136323590803054988, guid: a5f926deba725494cb17f0558348c659, type: 3}
+  accuracyRadius: 3

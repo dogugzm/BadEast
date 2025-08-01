@@ -103,12 +103,12 @@ namespace Unit.Soldier
 
                 if (possibleTargets.Length > 0)
                 {
-                    // Process found targets
-                    foreach (var target in possibleTargets)
+                    // Process found targets randomly
+                    var randomIndex = UnityEngine.Random.Range(0, possibleTargets.Length);
+                    var randomTarget = possibleTargets[randomIndex];
+                    if (randomTarget.TryGetComponent(out IDamageable damageableSoldier))
                     {
-                        if (!target.TryGetComponent(out IDamageable damageableSoldier)) continue;
                         CurrentTarget = damageableSoldier;
-                        break;
                     }
                 }
 
@@ -132,6 +132,14 @@ namespace Unit.Soldier
                 await UniTask.Delay(TimeSpan.FromSeconds(data.AttackInterval), cancellationToken: AttackCts.Token);
             }
         }
+
+        protected void ApplyDamage()
+        {
+            if (CurrentTarget is null) return;
+            if (CurrentTarget.CurrentHealth <= 0) return;
+            CurrentTarget.TakeDamage(Damage);
+        }
+
 
         protected virtual async UniTask PerformAttack()
         {
