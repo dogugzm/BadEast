@@ -4,73 +4,69 @@ using Unit;
 using UnityEngine;
 using VContainer.Unity;
 
-namespace DefaultNamespace
+public class SelectionManager : IInitializable
 {
-    public class SelectionManager : IInitializable
+    private readonly GridManager _gridManager;
+
+    public SelectionManager(GridManager gridManager)
     {
-        private readonly GridManager _gridManager;
+        _gridManager = gridManager;
+    }
 
-        public SelectionManager(GridManager gridManager)
+    [CanBeNull] private IUnit SelectedUnit { get; set; }
+    private const string GroundTagName = "Ground";
+
+    public void Initialize()
+    {
+        LeanTouch.OnFingerTap += OnFingerTap;
+    }
+
+    private void OnFingerTap(LeanFinger finger)
+    {
+        if (finger.IsOverGui) return;
+
+        var ray = Camera.main.ScreenPointToRay(finger.ScreenPosition);
+        if (!Physics.Raycast(ray, out var hit)) return;
+
+        if (hit.collider.CompareTag(GroundTagName) && SelectedUnit != null)
         {
-            _gridManager = gridManager;
-        }
+            //TODO: move to grid
 
-        [CanBeNull] private IUnit SelectedUnit { get; set; }
-        private const string GroundTagName = "Ground";
-
-        public void Initialize()
-        {
-            LeanTouch.OnFingerTap += OnFingerTap;
-        }
-
-        private void OnFingerTap(LeanFinger finger)
-        {
-            if (finger.IsOverGui) return;
-
-            var ray = Camera.main.ScreenPointToRay(finger.ScreenPosition);
-            if (!Physics.Raycast(ray, out var hit)) return;
-
-
-            if (hit.collider.CompareTag(GroundTagName) && SelectedUnit != null)
+            var gridCell = _gridManager.GetNearestWalkableGridCell(hit.point);
+            if (gridCell != null)
             {
-                //TODO: move to grid
-
-                var gridCell = _gridManager.GetNearestWalkableGridCell(hit.point);
-                if (gridCell != null)
+                if (SelectedUnit.transform.TryGetComponent(out IUnitMovement unitMovement))
                 {
-                    if (SelectedUnit.transform.TryGetComponent(out IUnitMovement unitMovement))
-                    {
-                        unitMovement.SetTarget(gridCell.Value.worldPosition);
-                        SelectedUnit = null;
-                    }
+                    unitMovement.SetTarget(gridCell.Value.worldPosition);
+                    SelectedUnit = null;
                 }
-
-                return;
             }
 
+            return;
+        }
 
-            if (!hit.collider.TryGetComponent(out ISelectable selectable)) return;
 
-            if (hit.collider.TryGetComponent(out IUnit unit))
+        if (!hit.collider.TryGetComponent(out ISelectable selectable)) return;
+
+        if (hit.collider.TryGetComponent(out IUnit unit))
+        {
+            if (!selectable.IsSelected)
             {
-                if (!selectable.IsSelected)
+                if (SelectedUnit is not null)
                 {
-                    if (SelectedUnit is not null)
+                    SelectedUnit.transform.TryGetComponent(out ISelectable selectableUnit);
+                    if (selectableUnit != null)
                     {
-                        SelectedUnit.transform.TryGetComponent(out ISelectable selectableUnit);
-                        if (selectableUnit != null)
-                        {
-                            selectableUnit.Deselect();
-                        }
+                        selectableUnit.Deselect();
                     }
+                }
 
-                    SelectedUnit = unit;
-                    selectable.Select();
-                }
-                else
-                {
-                    selectable.Deselect();
-                }
+                SelectedUnit = unit;
+                selectable.Select();
+            }
+            else
+            {
+                selectable.Deselect();
             }
         }
     }

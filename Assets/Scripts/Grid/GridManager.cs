@@ -5,19 +5,20 @@ using System.Collections.Generic;
 [ExecuteInEditMode]
 public class GridManager : MonoBehaviour
 {
-    [Header("Grid Settings")] public float cellSize = 0.5f; // Size of each 2D cell
-    public float sampleRadius = 0.25f; // Radius for sampling walkable points
-    public float minDistanceBetweenCells = 0.1f; // Minimum distance between cell edges
+    [Header("Grid Settings")] public float cellSize = 0.5f;
+    public float sampleRadius = 0.25f;
+    public float minDistanceBetweenCells = 0.1f;
 
     [Header("NavMesh Area")] public int navMeshAreaMask = NavMesh.AllAreas;
 
     public List<GridData> gridCells = new List<GridData>();
 
-    // Store previous values to detect changes
     [SerializeField] private float lastCellSize;
     [SerializeField] private float lastSampleRadius;
     [SerializeField] private float lastMinDistance;
     [SerializeField] private int lastNavMeshAreaMask;
+
+    public bool isReady;
 
     void OnEnable()
     {
@@ -46,6 +47,7 @@ public class GridManager : MonoBehaviour
     [ContextMenu("Generate Grid")] // Allows manual grid generation from context menu
     public void GenerateGridFromNavMesh()
     {
+        isReady = false;
         gridCells.Clear();
 
         NavMeshTriangulation navMeshData = NavMesh.CalculateTriangulation();
@@ -76,6 +78,7 @@ public class GridManager : MonoBehaviour
             }
         }
 
+        isReady = true;
         Debug.Log($"Generated {gridCells.Count} 2D grid cells across NavMesh");
     }
 
@@ -113,6 +116,15 @@ public class GridManager : MonoBehaviour
         }
 
         return nearest;
+    }
+
+    public GridData GetRandomWalkableGridCell()
+    {
+        if (gridCells == null || gridCells.Count == 0)
+            throw new System.InvalidOperationException("No grid cells available");
+
+        int randomIndex = Random.Range(0, gridCells.Count);
+        return gridCells[randomIndex];
     }
 
     void OnDrawGizmos()

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Formations;
 using Unit.Soldier;
 using UnityEngine;
@@ -6,41 +7,42 @@ namespace Unit
 {
     public class UnitSoldierController : MonoBehaviour
     {
-        [SerializeField] private Soldier.Soldier[] soldiers;
+        [SerializeField] private Soldier.Soldier _soldierPrefab;
 
-        public Soldier.Soldier[] GetSoldiers() => soldiers;
+        private List<ISoldier> _soldiers = new();
 
-        public void Initialize()
+        public void Initialize(int unitSize, UnitSide side)
         {
-            if (soldiers == null || soldiers.Length == 0) return;
-
             var positions =
-                BoxFormationHelper.GetPositions(soldiers.Length, transform.position, 2.0f, 1);
+                BoxFormationHelper.GetPositions(unitSize, 2.0f);
 
-            for (int i = 0; i < soldiers.Length; i++)
+            for (int i = 0; i < unitSize; i++)
             {
-                if (soldiers[i] == null) continue;
-                soldiers[i].TryGetComponent(out SoldierMovementController movementController);
+                var soldier = Instantiate(_soldierPrefab, positions[i], Quaternion.identity);
+                soldier.Init(side);
+                soldier.transform.position = transform.position;
+                soldier.TryGetComponent(out SoldierMovementController movementController);
                 movementController.Init(positions[i], transform);
+                _soldiers.Add(soldier);
             }
         }
 
         public void HighlightSoldiers()
         {
-            foreach (var soldier in soldiers)
+            foreach (var soldier in _soldiers)
             {
                 if (soldier == null) continue;
-                soldier.TryGetComponent(out SoldierVisualController soldierVisual);
+                soldier.transform.TryGetComponent(out SoldierVisualController soldierVisual);
                 soldierVisual.Highlight();
             }
         }
 
         public void SetNormalSoldiers()
         {
-            foreach (var soldier in soldiers)
+            foreach (var soldier in _soldiers)
             {
                 if (soldier == null) continue;
-                soldier.TryGetComponent(out SoldierVisualController soldierVisual);
+                soldier.transform.TryGetComponent(out SoldierVisualController soldierVisual);
                 soldierVisual.SetNormal();
             }
         }

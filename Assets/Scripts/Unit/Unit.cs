@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Unit
 {
@@ -13,6 +14,7 @@ namespace Unit
     {
         Transform transform { get; }
         UnitSide Side { get; }
+        void Init(UnitSide side);
     }
 
     public enum CombatStatus
@@ -24,17 +26,25 @@ namespace Unit
 
     public class Unit : MonoBehaviour, IUnit
     {
-        [field: SerializeField] public UnitSide Side { get; protected set; }
-
-        private void Awake()
+        [Serializable]
+        public class UnitData
         {
-            Initialize();
+            public UnitData(int unitSize)
+            {
+                UnitSize = unitSize;
+            }
+
+            [field: SerializeField] public int UnitSize { get; set; }
         }
 
-        private void Initialize()
+        [SerializeField] private UnitData unitData;
+        public UnitSide Side { get; private set; }
+
+        public void Init(UnitSide side)
         {
+            Side = side;
             if (!TryGetComponent(out UnitSoldierController soldierController)) return;
-            soldierController.Initialize();
+            soldierController.Initialize(unitData.UnitSize, side);
         }
     }
 }

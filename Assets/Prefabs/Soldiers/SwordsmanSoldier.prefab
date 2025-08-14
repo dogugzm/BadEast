@@ -98,4 +98,4 @@ MonoBehaviour:
     <VisibleRange>k__BackingField: 15
   targetLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128

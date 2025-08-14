@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -62,6 +63,8 @@ namespace Unit.Soldier
         [SerializeField] private Data data; // Combat data
         [SerializeField] private LayerMask targetLayerMask;
 
+        private UnitSide _side;
+
         public void TakeDamage(float damage)
         {
             if (data.Health <= 0) return;
@@ -77,8 +80,13 @@ namespace Unit.Soldier
             }
         }
 
-        private void Awake()
+        private async void Awake()
         {
+            if (!TryGetComponent(out ISoldier soldier)) return;
+            await UniTask.WaitUntil(() => soldier.IsInitialized,
+                cancellationToken: this.GetCancellationTokenOnDestroy());
+            _side = soldier.Side;
+
             SearchCts = new CancellationTokenSource();
             AttackCts = new CancellationTokenSource();
 
@@ -100,7 +108,9 @@ namespace Unit.Soldier
             while (SearchCts is not null && !SearchCts.IsCancellationRequested)
             {
                 var possibleTargets = Physics.OverlapSphere(transform.position, data.VisibleRange, targetLayerMask);
-
+                possibleTargets = possibleTargets.Where(target =>
+                        target.TryGetComponent(out ISoldier soldier) && soldier.Side != _side)
+                    .ToArray();
                 if (possibleTargets.Length > 0)
                 {
                     // Process found targets randomly

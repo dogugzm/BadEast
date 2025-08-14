@@ -23,7 +23,7 @@ namespace Unit.Soldier
 
         private Vector3 TargetTransform()
         {
-            Vector3 target = _unitTransform.localPosition + _offsetFromUnit;
+            Vector3 target = _unitTransform.position + _offsetFromUnit;
 
             // Add Perlin noise to create natural deviation
             float time = Time.time * noiseFrequency + _delayTime; // Incorporate delay for variation

@@ -8,6 +8,7 @@ namespace Unit
 {
     public interface IUnitMovement
     {
+        Transform transform { get; }
         void SetTarget(Vector3 position);
         void SetCanMove(bool canMove);
         void ResetMovement();
