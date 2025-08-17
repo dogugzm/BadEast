@@ -19,11 +19,10 @@ namespace Unit.Soldier
     public interface ITargetSearchable
     {
         public float VisibleRange { get; }
-        public CancellationTokenSource SearchCts { get; set; }
+        public CancellationTokenSource SearchCts { get; }
         public UniTask SearchForTargets();
-
-        // public ISoldier GetNearestTarget(ISoldier[] soldiers);
-        // public ISoldier GetRandomTarget(ISoldier[] soldiers);
+        public Action OnTargetFound { get; }
+        public Action OnTargetLost { get; }
         public LayerMask TargetLayerMask { get; }
     }
 
@@ -58,6 +57,8 @@ namespace Unit.Soldier
         public CancellationTokenSource AttackCts { get; set; }
         public IDamageable CurrentTarget { get; set; }
         public LayerMask TargetLayerMask => targetLayerMask;
+        public Action OnTargetFound { get; protected set; }
+        public Action OnTargetLost { get; protected set; }
 
         [SerializeField] protected SoldierMovementController movementController;
         [SerializeField] private Data data; // Combat data
@@ -112,6 +113,8 @@ namespace Unit.Soldier
                     .ToArray();
                 if (possibleTargets.Length > 0)
                 {
+                    OnTargetFound?.Invoke();
+
                     // Process found targets randomly
                     var randomIndex = UnityEngine.Random.Range(0, possibleTargets.Length);
                     var randomTarget = possibleTargets[randomIndex];
@@ -120,10 +123,16 @@ namespace Unit.Soldier
                         CurrentTarget = damageableSoldier;
                     }
                 }
+                else
+                {
+                    CurrentTarget = null;
+                    OnTargetLost?.Invoke();
+                }
 
                 await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: SearchCts.Token);
             }
         }
+
 
         public async UniTask Attack()
         {

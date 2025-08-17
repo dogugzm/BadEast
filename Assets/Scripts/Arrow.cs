@@ -68,9 +68,9 @@ public class Arrow : MonoBehaviour
 
         if (!damageable.transform.TryGetComponent(out ISoldier soldier)) return;
 
-        if (soldier.Side == _targetSide)
-        {
-            damageable.TakeDamage(_damage);
-        }
+        if (soldier.Side == _targetSide) return;
+
+        Debug.Log("Arrow hit: " + other.name);
+        damageable.TakeDamage(_damage);
     }
 }
