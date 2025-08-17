@@ -958,6 +958,7 @@ MonoBehaviour:
   gridManager: {fileID: 1470376587}
   swordsmanUnitPrefab: {fileID: 6673131779879136210, guid: 550c7b4c37f9d4bc69609ec13b00404b, type: 3}
   archerUnitPrefab: {fileID: 407885723001555397, guid: d87ea357182ac4c138a758afdaa1bcb4, type: 3}
+  spearmanUnitPrefab: {fileID: -6363795326169850628, guid: cbe59f3124963442f9fd64ce9c6f1d12, type: 3}
 --- !u!4 &779833845
 Transform:
   m_ObjectHideFlags: 0
@@ -1625,6 +1626,7 @@ MonoBehaviour:
   lastSampleRadius: 2.2
   lastMinDistance: 0.1
   lastNavMeshAreaMask: -1
+  isReady: 1
 --- !u!4 &1470376588
 Transform:
   m_ObjectHideFlags: 0

@@ -1,29 +1,25 @@
-using System;
-using System.Collections.Generic;
-using Unit;
 using Unit.Archer;
+using Unit.Spearman;
 using Unit.Swordsman;
 using UnityEngine;
-using UnityEngine.Serialization;
 using VContainer;
 using VContainer.Unity;
 
-namespace DefaultNamespace
+public class GameLifetimeScope : LifetimeScope
 {
-    public class GameLifetimeScope : LifetimeScope
+    [SerializeField] private GridManager gridManager;
+    [SerializeField] private SwordsmanUnit swordsmanUnitPrefab;
+    [SerializeField] private ArcherUnit archerUnitPrefab;
+    [SerializeField] private SpearmanUnit spearmanUnitPrefab;
+
+    protected override void Configure(IContainerBuilder builder)
     {
-        [SerializeField] private GridManager gridManager;
-        [SerializeField] private SwordsmanUnit swordsmanUnitPrefab;
-        [SerializeField] private ArcherUnit archerUnitPrefab;
+        builder.RegisterComponent(gridManager);
+        builder.RegisterComponent(swordsmanUnitPrefab).AsImplementedInterfaces().AsSelf();
+        builder.RegisterComponent(archerUnitPrefab).AsImplementedInterfaces().AsSelf();
+        builder.RegisterComponent(spearmanUnitPrefab).AsImplementedInterfaces().AsSelf();
 
-        protected override void Configure(IContainerBuilder builder)
-        {
-            builder.RegisterComponent(gridManager);
-            builder.RegisterComponent(swordsmanUnitPrefab).AsImplementedInterfaces().AsSelf();
-            builder.RegisterComponent(archerUnitPrefab).AsImplementedInterfaces().AsSelf();
-
-            builder.Register<SelectionManager>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
-            builder.Register<LevelController>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
-        }
+        builder.Register<SelectionManager>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
+        builder.Register<LevelController>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
     }
 }
