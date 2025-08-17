@@ -72,7 +72,6 @@ namespace Unit.Soldier
             data.Health -= damage;
             transform.DOKill();
             transform.DOShakeScale(0.2f, 0.4f);
-            Debug.Log($"{gameObject.name} took {damage} damage. Remaining health: {data.Health}");
 
             if (data.Health <= 0)
             {
@@ -132,7 +131,6 @@ namespace Unit.Soldier
             {
                 if (CurrentTarget == null || CurrentTarget.CurrentHealth <= 0)
                 {
-                    Debug.Log($"{gameObject.name} has no valid target to attack.");
                     await UniTask.Delay(TimeSpan.FromSeconds(data.AttackInterval), cancellationToken: AttackCts.Token);
                     continue;
                 }
@@ -147,6 +145,7 @@ namespace Unit.Soldier
         {
             if (CurrentTarget is null) return;
             if (CurrentTarget.CurrentHealth <= 0) return;
+            Debug.Log($"{gameObject.name} attacks {CurrentTarget.transform.name} for {Damage} damage.");
             CurrentTarget.TakeDamage(Damage);
         }
 

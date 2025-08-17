@@ -35,10 +35,14 @@ namespace Unit.Archer
             GameObject newArrowObject = Instantiate(arrowPrefab);
             newArrowObject.transform.position = transform.position + Vector3.up * 0.5f; // Adjust height if needed
 
+
             // Get the Arrow script and initialize it.
             if (newArrowObject.TryGetComponent(out Arrow arrowScript))
             {
-                arrowScript.Initialize(Damage, targetPosition);
+                if (CurrentTarget.transform.TryGetComponent(out ISoldier soldier))
+                {
+                    arrowScript.Initialize(Damage, targetPosition, soldier.Side);
+                }
             }
         }
     }
