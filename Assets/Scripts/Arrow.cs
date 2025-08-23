@@ -33,33 +33,33 @@ public class Arrow : MonoBehaviour
 
         _calculatedArcHeight = _journeyLength * baseArcHeightMultiplier;
     }
+    
+    [SerializeField] private float gravity = -9.81f;
+    [SerializeField] private float flightTime = 1f;
 
     private void Update()
     {
-        float distanceCovered = (Time.time - _startTime) * arrowSpeed;
-        float journeyFraction = distanceCovered / _journeyLength;
+        float elapsed = Time.time - _startTime;
+        float t = elapsed / flightTime;
 
-        if (journeyFraction >= 1)
+        if (t >= 1f)
         {
             Destroy(gameObject);
             return;
         }
 
-        Vector3 currentPosition = Vector3.Lerp(_startPosition, _targetPosition, journeyFraction);
+        Vector3 currentPosition = Vector3.Lerp(_startPosition, _targetPosition, t);
 
-
-        float yOffset = _calculatedArcHeight * Mathf.Sin(journeyFraction * Mathf.PI);
-        currentPosition.y += yOffset;
+        // parabole ekle
+        float height = 4 * _calculatedArcHeight * t * (1 - t); // klasik parabol
+        currentPosition.y += height;
 
         Vector3 previousPosition = transform.position;
         transform.position = currentPosition;
 
-
         Vector3 direction = (currentPosition - previousPosition).normalized;
         if (direction != Vector3.zero)
-        {
             transform.forward = direction;
-        }
     }
 
     private void OnTriggerEnter(Collider other)
