@@ -222,7 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementController: {fileID: 6878496616686561139}
   data:
-    <AttackInterval>k__BackingField: 2
+    <AttackInterval>k__BackingField: 1
     <Damage>k__BackingField: 50
     <Health>k__BackingField: 100
     <AttackRange>k__BackingField: 10
