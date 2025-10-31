@@ -1,54 +1,46 @@
-using System.Numerics;
+using Core;
 using Cysharp.Threading.Tasks;
 using Unit;
 using Unit.Archer;
 using Unit.Spearman;
 using Unit.Swordsman;
-using VContainer;
+using UnityEngine;
 using VContainer.Unity;
-using Quaternion = UnityEngine.Quaternion;
 
 public class LevelController : IInitializable
 {
-    private readonly ArcherUnit _archerUnitPrefab;
-    private readonly SwordsmanUnit _swordsmanUnitPrefab;
-    private readonly SpearmanUnit _spearmanUnitPrefab;
-    private readonly IObjectResolver _objectResolver;
+    private readonly PoolManager _poolManager;
     private readonly GridManager _gridManager;
 
-    public LevelController(ArcherUnit archerUnitPrefab, SwordsmanUnit swordsmanUnitPrefab,
-        IObjectResolver objectResolver, GridManager gridManager, SpearmanUnit spearmanUnitPrefab)
+    public LevelController(PoolManager poolManager, GridManager gridManager)
     {
-        _archerUnitPrefab = archerUnitPrefab;
-        _swordsmanUnitPrefab = swordsmanUnitPrefab;
-        _objectResolver = objectResolver;
+        _poolManager = poolManager;
         _gridManager = gridManager;
-        _spearmanUnitPrefab = spearmanUnitPrefab;
     }
 
     public async void Initialize()
     {
         await UniTask.WaitUntil(() => _gridManager.isReady);
 
-        var swordsmanUnit = _objectResolver.Instantiate(_swordsmanUnitPrefab.gameObject,
-            _gridManager.GetRandomWalkableGridCell().worldPosition, Quaternion.identity);
-        if (swordsmanUnit.TryGetComponent(out IUnit unit))
-        {
-            unit.Init(UnitSide.Enemy);
-        }
+        // Get a Swordsman from the pool manager
+        var swordsmanUnit = _poolManager.Get<SwordsmanUnit>();
+        swordsmanUnit.transform.position = _gridManager.GetRandomWalkableGridCell().worldPosition;
+        swordsmanUnit.transform.rotation = Quaternion.identity;
+        swordsmanUnit.Init(UnitSide.Enemy);
 
-        var archerUnit = _objectResolver.Instantiate(_archerUnitPrefab.gameObject,
-            _gridManager.GetRandomWalkableGridCell().worldPosition, Quaternion.identity);
-        if (archerUnit.TryGetComponent(out IUnit archerUnitComponent))
-        {
-            archerUnitComponent.Init(UnitSide.Player);
-        }
+        // Get an Archer from the pool manager
+        var archerUnit = _poolManager.Get<ArcherUnit>();
+        archerUnit.transform.position = _gridManager.GetRandomWalkableGridCell().worldPosition;
+        archerUnit.transform.rotation = Quaternion.identity;
+        archerUnit.Init(UnitSide.Player);
 
-        var spearmanUnit = _objectResolver.Instantiate(_spearmanUnitPrefab.gameObject,
-            _gridManager.GetRandomWalkableGridCell().worldPosition, Quaternion.identity);
-        if (spearmanUnit.TryGetComponent(out IUnit spearmanUnitComponent))
-        {
-            spearmanUnitComponent.Init(UnitSide.Player);
-        }
+        // Get a Spearman from the pool manager
+        var spearmanUnit = _poolManager.Get<SpearmanUnit>();
+        spearmanUnit.transform.position = _gridManager.GetRandomWalkableGridCell().worldPosition;
+        spearmanUnit.transform.rotation = Quaternion.identity;
+        spearmanUnit.Init(UnitSide.Player);
+
+        // Example of how to return a unit to the pool later
+        // _poolManager.Return(archerUnit);
     }
 }
